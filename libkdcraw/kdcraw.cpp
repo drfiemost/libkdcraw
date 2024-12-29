@@ -122,7 +122,7 @@ bool KDcraw::loadEmbeddedPreview(QByteArray& imgData, const QString& path)
 
     LibRaw raw;
 
-    int ret = raw.open_file(QFile::encodeName(path));
+    int ret = raw.open_file(QFile::encodeName(path).constData());
 
     if (ret != LIBRAW_SUCCESS)
     {
@@ -168,7 +168,7 @@ bool KDcraw::loadHalfPreview(QImage& image, const QString& path)
     raw.imgdata.params.use_camera_wb = 1;         // Use camera white balance, if possible.
     raw.imgdata.params.half_size     = 1;         // Half-size color image (3x faster than -q).
 
-    int ret = raw.open_file(QFile::encodeName(path));
+    int ret = raw.open_file(QFile::encodeName(path).constData());
 
     if (ret != LIBRAW_SUCCESS)
     {
@@ -201,7 +201,7 @@ bool KDcraw::loadHalfPreview(QByteArray& imgData, const QString& path)
     kDebug() << "Try to use reduced RAW picture extraction";
 
     LibRaw raw;
-    int ret = raw.open_file(QFile::encodeName(path));
+    int ret = raw.open_file(QFile::encodeName(path).constData());
 
     if (ret != LIBRAW_SUCCESS)
     {
@@ -322,7 +322,7 @@ bool KDcraw::rawFileIdentify(DcrawInfoContainer& identify, const QString& path)
 
     LibRaw raw;
 
-    int ret = raw.open_file(QFile::encodeName(path));
+    int ret = raw.open_file(QFile::encodeName(path).constData());
 
     if (ret != LIBRAW_SUCCESS)
     {
@@ -366,7 +366,7 @@ bool KDcraw::extractRAWData(const QString& filePath, QByteArray& rawData, DcrawI
     // Set progress call back function.
     raw.set_progress_handler(callbackForLibRaw, d);
 
-    int ret = raw.open_file(QFile::encodeName(filePath));
+    int ret = raw.open_file(QFile::encodeName(filePath).constData());
 
     if (ret != LIBRAW_SUCCESS)
     {

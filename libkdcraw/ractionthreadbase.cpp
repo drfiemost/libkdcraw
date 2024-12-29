@@ -54,7 +54,7 @@ namespace KDcrawIface
 RActionThreadBase::RActionThreadBase(QObject* const parent)
     : QThread(parent), d(new Private)
 {
-    const int maximumNumberOfThreads = qMax(Device::listFromType(DeviceInterface::Processor).count(), 1);
+    const int maximumNumberOfThreads = std::max(Device::listFromType(DeviceInterface::Processor).count(), 1);
     d->log                           = new RWeaverObserver(this);
     d->weaver                        = new Weaver(this);
     d->weaver->registerObserver(d->log);
