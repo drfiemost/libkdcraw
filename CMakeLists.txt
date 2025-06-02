@@ -4,7 +4,7 @@
 # Redistribution and use is allowed according to the terms of the BSD license.
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.12)
 project(libkdcraw)
 
 set(CMAKE_CXX_EXTENSIONS OFF)
